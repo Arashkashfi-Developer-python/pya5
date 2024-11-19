@@ -1,0 +1,112 @@
+<!-- architecture.html -->
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معماری ایران</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #673ab7;
+        }
+        
+        .architecture-item {
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 15px 0;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .architecture-item h2 {
+            color: #3f51b5;
+        }
+        
+        .architecture-item p {
+            line-height: 1.6;
+        }
+        
+        .ticket-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        
+        .ticket-form label {
+            margin-top: 10px;
+            display: block;
+        }
+        
+        .ticket-form input,
+        .ticket-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .ticket-form button {
+            background-color: #673ab7;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .ticket-form button:hover {
+            background-color: #5e35b1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>معماری ایران</h1>
+
+    <div id="architectureContent">
+        {% for architecture in architectures %}
+        <div class="architecture-item">
+            <h2>{{ architecture.title }}</h2>
+            <p>{{ architecture.description }}</p>
+            <small>{{ architecture.date }}</small>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="ticket-form">
+        <h2>تیکت بفرستید</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="name">نام شما:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">ایمیل شما:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">پیام شما:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">ارسال تیکت</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>توسعه یافته توسط PyA5 &copy; 2023</p>
+    </footer>
+</body>
+
+</html>
