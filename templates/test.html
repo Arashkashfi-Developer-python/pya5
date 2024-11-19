@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya Shahrestani - Professional Profile - رزومه تخصصی - آریا شهرستانی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+         :root {
+            --primary-color: #0080ff;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --animation-timing: 0.3s;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: gradientBG 10s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: slideInFromLeft 1s ease-out;
+            text-shadow: 2px 2px 4px rgb(255, 0, 0);
+        }
+        
+        .header h2 {
+            color: white;
+            font-size: 1.8em;
+            animation: slideInFromRight 1s ease-out;
+            text-shadow: 1px 1px 3px rgba(246, 0, 0, 0.2);
+        }
+        
+        .contact-info {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all var(--animation-timing) ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section {
+            background: var(--card-background);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            animation: expandWidth 1s ease-out forwards;
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 50px;
+            }
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .certification-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all var(--animation-timing) ease;
+            position: relative;
+        }
+        
+        .certification-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .certification-card p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        /* Loading animation */
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Scroll to top button */
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .header h2 {
+                font-size: 1.4em;
+            }
+            .certification-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                flex-direction: column;
+            }
+            .contact-info a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="header">
+        <h1>Arya Shahrestani</h1>
+        <h2>IT Instructor & Cybersecurity Project Manager</h2>
+        <div class="contact-info">
+            <a href="mailto:arya.shahrestani@gmail.com">✉️ arya.shahrestani@gmail.com</a>
+            <a href="tel:+989120341145">📱 +98 912 034 1145</a>
+            <a href="tel:+989981733666">📱 +98 998 173 3666</a>
+            <a href="https://arjang.ac.ir/insructor/%D8%A2%D8%B1%DB%8C%D8%A7-%D8%B4%D9%87%D8%B1%D8%B3%D8%AA%D8%A7%D9%86%DB%8C" target="_blank">🌐 arjang.ac.ir</a>
+            <a href="https://t.me/AryaShahrestani" target="_blank">📡 Telegram</a>
+            <a href="" target="_blank">📜 Articles</a>
+            <a href="" target="_blank">📜 Certifications</a>
+            <a href="https://b2n.ir/ashexam" target="_blank">🧪 Online Examination (for Students)</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>Dedicated IT professional with over 7 years of experience in network engineering, cybersecurity, and project management, specializing in educational and hands-on training environments. Known for delivering high-quality instruction across critical
+            IT fields such as Python programming, network administration, and cybersecurity, I bring a practical, security-focused approach to training. With 6 years of project management experience at Fanavaran Asre Shabake Pasargad Technology and 7+
+            years teaching 600+ sessions in industry-standard certifications, I'm recognized for my structured, student-centered teaching approach. I am adept at developing real-world labs and tools, empowering students to become proficient in IT and
+            cybersecurity.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Professional Experience</h2>
+        <div class="experience-item">
+            <h3>Fanavaran Asre Shabake Pasargad Technology, Tehran</h3>
+            <h4>Project Manager, Cybersecurity (2018–Present)</h4>
+            <ul>
+                <li>Spearheaded cybersecurity projects aimed at reducing risk across financial and governmental institutions.</li>
+                <li>Established robust security practices and incident response protocols, utilizing penetration testing, network monitoring, and data protection strategies.</li>
+                <li>Leveraged tools like Nessus, OpenVAS, and Burp Suite to strengthen client infrastructure, achieving a 30% reduction in security incidents through systematic vulnerability assessment.</li>
+            </ul>
+        </div>
+        <br>
+        <div class="experience-item">
+            <h3>Techone24 Institute, Tehran</h3>
+            <h4>Cybersecurity Consultant (2016–Present)</h4>
+            <ul>
+                <li>Directed a diverse portfolio of cybersecurity projects, partnering with financial and governmental clients to tailor strategies that address sector-specific threats and regulatory requirements.</li>
+                <li>Designed and executed multi-layered security frameworks and incident response plans, focusing on prevention, early detection, and swift containment of potential cyber threats.</li>
+                <li>Strengthened clients’ cyber resilience through continuous monitoring, periodic penetration testing, and robust data protection solutions, establishing a proactive stance on security across all systems.</li>
+            </ul>
+        </div>
+        <br>
+        <div class="experience-item">
+            <h3>Paya Naqsh, Tehran</h3>
+            <h4>Head of IT (2022–Present)</h4>
+            <ul>
+                <li>Oversee all IT operations, including network infrastructure, cybersecurity, and IT support, ensuring alignment with organizational goals and regulatory compliance requirements.</li>
+                <li>Developed and implemented comprehensive security policies and protocols, enhancing data protection and reducing cyber risks across systems.</li>
+                <li>Led a team to perform in-depth vulnerability assessments, utilizing industry-standard tools such as Nessus, OpenVAS, and Burp Suite.</li>
+                <li>Enhanced system resilience by introducing automated monitoring systems and regular penetration tests, elevating the organization's preparedness and response to evolving cyber threats.</li>
+                <li>Established a continuous improvement framework within the IT department, focusing on emerging technologies, staff training, and policy optimization to ensure a robust and adaptive IT infrastructure.</li>
+            </ul>
+        </div>
+
+        <br>
+        <div class="experience-item">
+            <h3>Instruction Career</h3>
+            <h4>Educational Institutions: Arjang Institute, Fanavaran Asre Shabake Pasargad Academy, Techone24 Institute, Karyar Agham Institute (2018–Present)</h4>
+            <ul>
+                <li>Delivered 1,500+ hours of instruction in networking, Python programming, cybersecurity, and Linux administration, training hundreds of students for certifications such as CompTIA A+, Network+, Security+, Cisco CCNA, CCNP, and SANS courses.</li>
+                <li>Authored course materials for Network+, Python Engineering, Security+, Cisco CCNA, and various SANS courses, providing structured resources to support students in mastering core IT and security competencies.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Certifications & Course Expertise</h2>
+
+        <h3>CompTIA</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>A+ (26 sessions)</h4>
+                <p>Covers hardware, OS installation, diagnostics, and troubleshooting, essential for IT support roles.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Network+ (21 sessions)</h4>
+                <p>Networking fundamentals including IP addressing, configurations, and diagnostics for network administration.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Security+ (17 sessions)</h4>
+                <p>Comprehensive cybersecurity foundation, focusing on threat identification, risk management, and security architecture.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Server+ (13 sessions)</h4>
+                <p>Server hardware, OS configuration, and storage management for data center environments.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Storage+ (8 sessions)</h4>
+                <p>Storage systems, data backup, and disaster recovery.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Linux+ (8 sessions)</h4>
+                <p>Essential Linux skills for administration, networking, and security.</p>
+            </div>
+        </div>
+
+        <h3>Cisco</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>CCNA 200-301 (10 sessions)</h4>
+                <p>Cisco network fundamentals, covering VLANs, WAN technologies, and troubleshooting for CCNA certification.</p>
+            </div>
+            <div class="certification-card">
+                <h4>CCNP Score (8 sessions)</h4>
+                <p>Advanced network architecture and troubleshooting with an emphasis on security.</p>
+            </div>
+            <div class="certification-card">
+                <h4>CCNP Route and Switch (8 sessions)</h4>
+                <p>In-depth routing and switching protocols, covering OSPF, EIGRP, and BGP.</p>
+            </div>
+        </div>
+
+        <h3>SANS Institute</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>SANS 503 (6 sessions)</h4>
+                <p>Incident handling and forensics, focusing on network monitoring and exploit mitigation.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 504 (8 sessions)</h4>
+                <p>Incident response, threat detection, and recovery strategies.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 560 (10 sessions)</h4>
+                <p>Network penetration testing and ethical hacking.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 542 (10 sessions)</h4>
+                <p>Web application penetration testing, focusing on vulnerabilities and exploitation.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 660 (6 sessions)</h4>
+                <p>Advanced penetration testing, simulating complex network environments.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 642 (6 sessions)</h4>
+                <p>Advanced Web App Penetration Testing, covering secure coding practices.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 573 (8 sessions)</h4>
+                <p>Advanced Python scripting for cybersecurity operations.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 487 (8 sessions)</h4>
+                <p>Open-source intelligence gathering techniques.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 275 (11 sessions)</h4>
+                <p>Foundational cybersecurity principles, offering students a broad understanding of essential security skills.</p>
+            </div>
+        </div>
+
+        <h3>MikroTik</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>MTCNA (17 sessions)</h4>
+                <p>Introduction to network setup, IP addressing, and firewall rules.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCRE (13 sessions)</h4>
+                <p>Advanced routing techniques.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCWE (7 sessions)</h4>
+                <p>Wireless security and deployment.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCIPv6E (5 sessions)
+                    </h4

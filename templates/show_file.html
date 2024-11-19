@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f5ff;
+            /* Light blue background */
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            background-color: #ffffff;
+            /* White container */
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            /* Bright blue color */
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        
+        table th,
+        table td {
+            border: 1px solid #007BFF;
+            /* Bright blue borders */
+            padding: 10px;
+            text-align: left;
+            color: #000000;
+        }
+        
+        table th {
+            background-color: #007BFF;
+            /* Bright blue header */
+            color: #ffffff;
+            /* White text for header */
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+            /* Light gray for even rows */
+        }
+        
+        tr:hover {
+            background-color: #d1ecf1;
+            /* Light cyan on hover */
+        }
+        
+        .answered-yes {
+            color: #28a745;
+            /* Green color for answered */
+            font-weight: bold;
+        }
+        
+        .answered-no {
+            color: #dc3545;
+            /* Red color for not answered */
+            font-weight: bold;
+        }
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        td {
+            border: 1px solid #007BFF;
+            /* Bright blue borders */
+            padding: 10px;
+            text-align: left;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/./tik">     send ticket</a>
+        <a href="/./tik/anwsertik">       log in  with other name </a>
+        <a href="/.">       home page </a>
+    </nav </div>
+    <div class="container">
+        <h1>Data Display</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>name of file </th>
+                    <th>Name</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>
+                        <a href="{% url 'resume' item.id %}" #dc3545; text-decoration: none; ">{{ item.name }}</a></td>
+                    <td>{{ item.name }}</a>
+                    </td>
+                    <td>{{ item.timeuploaded|date:"Y-m-d H:i:s " }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

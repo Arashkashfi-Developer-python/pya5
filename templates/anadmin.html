@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .ticket {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .highlight {
+            background-color: #ffffcc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .ticket-info {
+            margin-bottom: 10px;
+        }
+        
+        .ticket-info span {
+            font-weight: bold;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        input {
+            margin-left: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>See Ticket</h1>
+
+    <div class="ticket">
+        <div class="ticket-info">
+            <span>Topic:</span> {{ data.topic }}
+        </div>
+        <div class="ticket-info">
+            <span>Ticket ID:</span> {{ data.tik }}
+        </div>
+        <div class="ticket-info">
+            <span>Name:</span> {{ data.name }}
+        </div>
+        <div class="ticket-info">
+            <span>Email:</span> {{ data.email }}
+        </div>
+        <div class="ticket-info">
+            <span>Answered:</span> {{ data.answered }}
+        </div>
+        <div class="ticket-info">
+            <span>Answers:</span> {{ data.answers }}
+        </div>
+        <div class="ticket-info">
+            <span>Time Uploaded:</span> {{ data.timeuploaded }}
+        </div>
+        <button type="button" onclick="addField()">Add Field</button>
+        <div class="highlight">
+            This is a highlighted section for extra emphasis.
+        </div>
+    </div>
+
+    <script>
+        function addField() {
+            const container = document.querySelector('.ticket');
+            const newField = document.createElement('div');
+            newField.classList.add('ticket-info');
+
+            const label = document.createElement('span');
+            label.textContent = 'New Field:';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Enter value here';
+
+            newField.appendChild(label);
+            newField.appendChild(input);
+            container.appendChild(newField);
+        }
+    </script>
+
+</body>
+
+</html>

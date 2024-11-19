@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arash kashfi - Professional Profile - رزومه تخصصی -ارش کشفی </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+         :root {
+            --primary-color: #0080ff;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --animation-timing: 0.3s;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0
+            }
+            to {
+                width: 100%
+            }
+        }
+        
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent
+            }
+            50% {
+                border-color: white;
+            }
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-size: 200% 200%;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: gradientBG 10s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 38, 255, 0.1), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: slideInFromLeft 1s ease-out;
+            text-shadow: 2px 2px 4px rgb(255, 0, 0);
+        }
+        
+        .header h2 {
+            color: white;
+            font-size: 1.8em;
+            animation: slideInFromRight 1s ease-out;
+            text-shadow: 1px 1px 3px rgba(246, 0, 0, 0.2);
+        }
+        
+        .contact-info {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all var(--animation-timing) ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section {
+            background: var(--card-background);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            animation: expandWidth 1s ease-out forwards;
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 50px;
+            }
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .certification-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all var(--animation-timing) ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        
+        .certification-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .certification-card p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all var(--animation-timing) ease;
+            border: 1px solid rgb(255, 255, 255);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .skill-category p {
+            color: #33b1ba;
+            font-size: 0.9em;
+        }
+        /* Progress bars for skills */
+        
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        /* Floating animation for cards */
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .header h2 {
+                font-size: 1.4em;
+            }
+            .certification-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                flex-direction: column;
+            }
+            .contact-info a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        /* Dark mode support */
+        
+        @media (prefers-color-scheme: dark) {
+             :root {
+                --text-color: #ffffff;
+                --background-color: #32629c;
+                --card-background: #2d2d2d;
+            }
+            .certification-card,
+            .skill-category {
+                background: var(--card-background);
+                border-color: rgba(99, 98, 98, 0.792);
+            }
+            .certification-card p,
+            .skill-category p {
+                color: #aaa;
+            }
+        }
+        /* Loading animation */
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Scroll to top button */
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Arash kashfi</h1>
+        <h2> IT Instructor & Cybersecurity Project Manager & web devloopment</h2>
+        <div class="contact-info">
+            <a href="mailto:arashkashf2012w@gmail.com">✉️ arashkashf2012w@gmail.com</a>
+            <a href="tel:+989120341145">📱 +98 912 034 1145</a>
+            <a href="tel:+989981733666">📱 +98 998 173 3666</a>
+            <a href="https://poe.com/pya5_bot" target="_blank">🌐 poe.com/pya5_bot</a>
+            <a href="https://t.me/arashcoder" target="_blank"> 📡 Telegram </a>
+
+            <a href="" target="_blank">📜 Articles</a>
+            <a href="" target="_blank">📜 Certifications</a>
+            </br>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>i'm a coder and a developer and web developer for django i like it and network i want to make the world codeing experience beter as people coding and programmer can code with out need try with ai and i make this ai in poe web site
+        </p>
+
+    </div>
+
+    <div class="section">
+        <h2>Professional Experience</h2>
+        <div class="experience-item">
+            <h3>Fanavaran Asre Shabake Pasargad Technology, Tehran</h3>
+            <h4>Project Manager, Cybersecurity (2018–Present)</h4>
+            <ul>
+                <li>Spearheaded cybersecurity projects aimed at reducing risk across financial and governmental institutions.</li>
+                <li>Established robust security practices and incident response protocols, utilizing penetration testing, network monitoring, and data protection strategies.</li>
+                <li>Leveraged tools like Nessus, OpenVAS, and Burp Suite to strengthen client infrastructure, achieving a 30% reduction in security incidents through systematic vulnerability assessment.</li>
+
+            </ul>
+        </div>
+        <br>
+        <div class="experience-item">
+            <h3>Techone24 Institute, Tehran</h3>
+            <h4>Cybersecurity Consultant (2016–Present)</h4>
+            <ul>
+                <li>Directed a diverse portfolio of cybersecurity projects, partnering with financial and governmental clients to tailor strategies that address sector-specific threats and regulatory requirements.</li>
+                <li>Designed and executed multi-layered security frameworks and incident response plans, focusing on prevention, early detection, and swift containment of potential cyber threats.</li>
+                <li>Strengthened clients’ cyber resilience through continuous monitoring, periodic penetration testing, and robust data protection solutions, establishing a proactive stance on security across all systems.</li>
+            </ul>
+
+        </div>
+        <br>
+        <div class="experience-item">
+            <h3>Paya Naqsh, Tehran</h3>
+            <h4>Head of IT (2022–Present)</h4>
+            <ul>
+                <li>Oversee all IT operations, including network infrastructure, cybersecurity, and IT support, ensuring alignment with organizational goals and regulatory compliance requirements.</li>
+                <li>Developed and implemented comprehensive security policies and protocols, enhancing data protection and reducing cyber risks across systems.</li>
+                <li>Led a team to perform in-depth vulnerability assessments, utilizing industry-standard tools such as Nessus, OpenVAS, and Burp Suite.</li>
+                <li>Enhanced system resilience by introducing automated monitoring systems and regular penetration tests, elevating the organization's preparedness and response to evolving cyber threats.</li>
+                <li>Established a continuous improvement framework within the IT department, focusing on emerging technologies, staff training, and policy optimization to ensure a robust and adaptive IT infrastructure.</li>
+            </ul>
+        </div>
+
+        <br>
+        <div class="experience-item">
+            <h3>Instruction Career</h3>
+            <h4>Educational Institutions: Arjang Institute, Fanavaran Asre Shabake Pasargad Academy, Techone24 Institute, Karyar Agham Institute (2018–Present)</h4>
+            <ul>
+                <li>Delivered 1,500+ hours of instruction in networking, Python programming, cybersecurity, and Linux administration, training hundreds of students for certifications such as CompTIA A+, Network+, Security+, Cisco CCNA, CCNP, and SANS courses.</li>
+                <li>Authored course materials for Network+, Python Engineering, Security+, Cisco CCNA, and various SANS courses, providing structured resources to support students in mastering core IT and security competencies.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Certifications & Course Expertise</h2>
+
+        <h3>CompTIA</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>A+ (26 sessions)</h4>
+                <p>Covers hardware, OS installation, diagnostics, and troubleshooting, essential for IT support roles.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Network+ (21 sessions)</h4>
+                <p>Networking fundamentals including IP addressing, configurations, and diagnostics for network administration.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Security+ (17 sessions)</h4>
+                <p>Comprehensive cybersecurity foundation, focusing on threat identification, risk management, and security architecture.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Server+ (13 sessions)</h4>
+                <p>Server hardware, OS configuration, and storage management for data center environments.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Storage+ (8 sessions)</h4>
+                <p>Storage systems, data backup, and disaster recovery.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Linux+ (8 sessions)</h4>
+                <p>Essential Linux skills for administration, networking, and security.</p>
+            </div>
+        </div>
+
+        <h3>Cisco</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>CCNA 200-301 (10 sessions)</h4>
+                <p>Cisco network fundamentals, covering VLANs, WAN technologies, and troubleshooting for CCNA certification.</p>
+            </div>
+            <div class="certification-card">
+                <h4>CCNP Score (8 sessions)</h4>
+                <p>Advanced network architecture and troubleshooting with an emphasis on security.</p>
+            </div>
+            <div class="certification-card">
+                <h4>CCNP Route and Switch (8 sessions)</h4>
+                <p>In-depth routing and switching protocols, covering OSPF, EIGRP, and BGP.</p>
+            </div>
+        </div>
+        <h3>SANS Institute</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>SANS 503 (6 sessions)</h4>
+                <p>Incident handling and forensics, focusing on network monitoring and exploit mitigation.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 504 (8 sessions)</h4>
+                <p>Incident response, threat detection, and recovery strategies.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 560 (10 sessions)</h4>
+                <p>Network penetration testing and ethical hacking.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 542 (10 sessions)</h4>
+                <p>Web application penetration testing, focusing on vulnerabilities and exploitation.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 660 (6 sessions)</h4>
+                <p>Advanced penetration testing, simulating complex network environments.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 642 (6 sessions)</h4>
+                <p>Advanced Web App Penetration Testing, covering secure coding practices.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 573 (8 sessions)</h4>
+                <p>Advanced Python scripting for cybersecurity operations.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 487 (8 sessions)</h4>
+                <p>Open-source intelligence gathering techniques.</p>
+            </div>
+            <div class="certification-card">
+                <h4>SANS 275 (11 sessions)</h4>
+                <p>Foundational cybersecurity principles, offering students a broad understanding of essential security skills.</p>
+            </div>
+        </div>
+
+        <h3>MikroTik</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>MTCNA (17 sessions)</h4>
+                <p>Introduction to network setup, IP addressing, and firewall rules.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCRE (13 sessions)</h4>
+                <p>Advanced routing techniques.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCWE (7 sessions)</h4>
+                <p>Wireless security and deployment.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCIPv6E (5 sessions)</h4>
+                <p>IPv6 integration and security configurations.</p>
+            </div>
+            <div class="certification-card">
+                <h4>MTCSE (5 sessions)</h4>
+                <p>Security implementations on MikroTik devices.</p>
+            </div>
+        </div>
+
+        <h3>Other IT & Cybersecurity Courses</h3>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>Python Engineering (17 sessions)</h4>
+                <p>Advanced Python programming, with a focus on automation, network scripting, and security testing.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Linux Essentials (15 sessions)</h4>
+                <p>Basic Linux administration, file management, and command-line operations.</p>
+            </div>
+            <div class="certification-card">
+                <h4>LPIC-1 & LPIC-2 (10 sessions)</h4>
+                <p>Advanced Linux administration, networking, and security.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="certification-grid">
+            <div class="skill-category">
+                <h4>Networking & System Administration</h4>
+                <p>Proficient in TCP/IP, DNS, DHCP, VPNs, VLANs, LAN/WAN infrastructure, and network protocols. Skilled in configuring Cisco routers and switches.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Cybersecurity & Penetration Testing</h4>
+                <p>Expert in vulnerability scanning, penetration testing, and incident response. Proficient in tools like Nmap, Nessus, Wireshark, Burp Suite, Metasploit, and Acunetix.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Python Development</h4>
+                <p>Advanced Python skills with a focus on automation, encryption, and security applications. Developed network scanners, encryption tools, and system monitoring applications using Scapy and Tkinter.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Linux Administration</h4>
+                <p>Command-line proficiency in Linux distributions, with experience in Bash scripting for network management and security tasks.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Web & Mobile Security</h4>
+                <p>Skilled in web vulnerability assessment, XSS, SQL injection, and Android security, using tools like ZAP, Fiddler, and WPScan.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Cloud Security</h4>
+                <p>Expertise in securing cloud environments such as AWS, Azure, and GCP. Proficient in understanding and implementing security best practices, IAM policies, and secure configurations.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Incident Response & Forensics</h4>
+                <p>Skilled in incident response procedures, digital forensics, and malware analysis. Proficient in tools such as Volatility, Autopsy, and Wireshark for forensic investigations.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Firewall & IDS/IPS</h4>
+                <p>Proficient in configuring firewalls, intrusion detection systems (IDS), and intrusion prevention systems (IPS) to protect network infrastructure. Experience with tools like Snort, Suricata, and Palo Alto Networks.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Database Security</h4>
+                <p>Expertise in securing databases, including SQL injection prevention, data encryption, and access control. Proficient in tools like SQLMap and Burp Suite for database security assessments.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Security Automation & Orchestration</h4>
+                <p>Proficient in automating security tasks using tools like Ansible, Puppet, and Chef. Skilled in integrating security tools with orchestration platforms for continuous monitoring and response.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Security Information and Event Management (SIEM)</h4>
+                <p>Expertise in deploying and configuring SIEM systems like Splunk, QRadar, and ELK Stack for centralized logging, monitoring, and threat detection.</p>
+            </div>
+            <div class="skill-category">
+                <h4>Penetration Testing</h4>
+                <p>Expert in conducting penetration testing to identify and exploit vulnerabilities in systems, networks, and applications. Proficient in using tools such as Nmap, Metasploit, Burp Suite, and Wireshark. Skilled in performing various types
+                    of tests including network, web, and mobile application penetration testing.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Projects & Contributions</h2>
+        <div class="certification-grid">
+            <div class="certification-card">
+                <h4>Network Security Project</h4>
+                <p>Developed Python-based security tools including network scanners, vulnerability scripts, and an antivirus bypass module, used extensively in training labs.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Wireless Security Labs</h4>
+                <p>Designed labs for hands-on training in wireless security, including WPA/WPA2 attacks and AP spoofing, allowing students to apply techniques in a controlled learning environment.</p>
+            </div>
+            <div class="certification-card">
+                <h4>File Encryption Application in Python</h4>
+                <p>Created an encryption GUI-based application with options for custom key generation, file encryption, and secure data handling, utilizing Tkinter and Kivy for cross-platform functionality.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Automated Deployment Pipeline</h4>
+                <p>Implemented an automated CI/CD pipeline using Jenkins, GitHub, and Docker, enabling seamless deployment of applications to production environments.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Containerization with Docker</h4>
+                <p>Designed and deployed containerized applications using Docker, optimizing resource usage and ensuring consistent environments across development, testing, and production.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Kubernetes Cluster Setup</h4>
+                <p>Configured and managed a Kubernetes cluster for orchestration of containerized applications, ensuring high availability, scalability, and efficient resource utilization.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Python Scripting for Automation</h4>
+                <p>Developed Python scripts for automating routine tasks such as data processing, file management, and system monitoring, improving efficiency and reducing manual errors.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Web Scraping with Python</h4>
+                <p>Created Python scripts using libraries like BeautifulSoup and Scrapy to extract data from websites, enabling automated data collection for analysis and reporting.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Automated Vulnerability Scanning</h4>
+                <p>Developed an automated vulnerability scanning tool using Python and Nmap, capable of identifying and reporting security vulnerabilities in network infrastructure.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Python-based Firewall Automation</h4>
+                <p>Created a Python script to automate the configuration and management of firewalls, enhancing security and reducing manual intervention.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Automated Backup Solutions</h4>
+                <p>Developed Python scripts for automated backup and restoration of critical data, ensuring data integrity and availability in case of system failures.</p>
+            </div>
+            <div class="certification-card">
+                <h4>Containerized Web Application</h4>
+                <p>Deployed a containerized web application using Docker and Kubernetes, ensuring scalability, reliability, and efficient resource management.</p>
+            </div>
+            <div class="certification-card">
+                <h4>AI-Powered Aim Bot Development</h4>
+                <p>Designed an aim bot using advanced image processing techniques, enabling precise targeting in competitive gaming environments.</p>
+            </div>
+
+            <div class="certification-card">
+                <h4>Image Processing for Game Enhancement</h4>
+                <p>Implemented image processing algorithms to analyze game visuals, improving player performance through real-time feedback and adjustments.</p>
+            </div>
+
+            <div class="certification-card">
+                <h4>Automated Game Strategy Analysis</h4>
+                <p>Developed a tool that utilizes AI to analyze gameplay strategies, providing insights and recommendations for optimizing player tactics.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Additional Information</h2>
+        <p>Bilingual in Persian and English, I possess a profound ability to translate intricate technical subjects into comprehensible formats tailored for a diverse range of learning audiences. My commitment to ensuring that knowledge is not only accessible
+            but also actionable is evident in every course I deliver. I am recognized for cultivating a collaborative learning atmosphere, where students are encouraged to engage in practical applications of their knowledge. Through the use of real-world
+            simulations and meticulously designed laboratories, I provide opportunities for learners to rigorously test and refine their skills, thereby enhancing their overall educational experience.</p>
+        <br>
+        <p>Tehran, Tehran, Iran</p>
+    </div>
+</body>
+
+</html>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+
+
+    <script>
+        // Remove loading overlay when page is loaded
+        window.addEventListener('load', () => {
+            document.querySelector('.loading-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.loading-overlay').style.display = 'none';
+            }, 500);
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Animate skill bars when they become visible
+                    if (entry.target.id === 'skills') {
+                        document.querySelectorAll('.skill-progress').forEach(bar => {
+                            const progress = bar.getAttribute('data-progress');
+                            bar.style.width = `${progress}%`;
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach((section) => {
+            observer.observe(section);
+        });
+
+        // Scroll to top functionality
+        const scrollButton = document.querySelector('.scroll-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add hover effects for certification cards
+        document.querySelectorAll('.certification-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
+            });
+
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 3px 10px rgba(0,0,0,0.05)';
+            });
+        });
+
+        // Add floating animation to header elements
+        const headerElements = document.querySelectorAll('.header h1, .header h2');
+        headerElements.forEach(element => {
+            element.style.animation = `float 3s ease-in-out infinite`;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add dynamic background effects
+        const header = document.querySelector('.header');
+        header.addEventListener('mousemove', (e) => {
+            const rect = header.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            header.style.background = `
+                linear-gradient(
+                    135deg,
+                    var(--primary-color),
+                    var(--secondary-color)
+                ),
+                radial-gradient(
+                    circle at ${x}px ${y}px,
+                    rgba(255,255,255,0.2),
+                    transparent 40%
+                )
+            `;
+        });
+    </script>
+</body>
+
+</html>

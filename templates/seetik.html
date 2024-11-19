@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+        
+        p {
+            color: #555;
+        }
+        
+        .highlight {
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .timestamp {
+            color: #6c757d;
+            text-align: center;
+        }
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Improved Document</h1>
+        <nav>
+            <a href="/./tik">send ticket</a>
+            <a href="/./anwsertik">see ticket</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>{{ data.topic }}</h2>
+        <p>{{ data.tik }}</p>
+        <p>Name: {{ data.name }}</p>
+        <p>Email: {{ data.email }}</p>
+        <p>Answered: {{ data.answered }}</p>
+        <p>Answers: {{ data.answers }}</p>
+        <p>if you see your answers and you want to ask something about it or add something use the ticket id to make like ticket </p>
+        <p>ticket_ID: {{data.id}}</p>
+        <p class="timestamp">Time Uploaded: {{ data.timeuploaded }}</p>
+        <div class="highlight">
+            This is a highlighted section for extra emphasis.
+        </div>
+    </div>
+</body>
+
+</html>

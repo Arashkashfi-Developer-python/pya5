@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت ایرانیان و جهانگیران</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            color: #d5006d;
+            /* رنگ صورتی تیره */
+            text-align: right;
+        }
+        
+        nav {
+            background-color: #ff69b4;
+            text-align: center;
+            /* رنگ صورتی روشن */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #ffd700;
+            /* رنگ طلایی */
+        }
+        
+        div.product {
+            background-color: #ffffff;
+            text-align: center;
+            border: 2px solid #ff1493;
+            /* رنگ صورتی تیره‌تر */
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        div.product:hover {
+            transform: scale(1.05);
+            /* بزرگ شدن محصول در هاور */
+        }
+        
+        h4 {
+            color: #ff1493;
+            text-align: center;
+            /* رنگ صورتی تیره */
+        }
+        
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+            text-align: center;
+        }
+        
+        button {
+            background-color: #ff69b4;
+            /* رنگ صورتی روشن */
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #d5006d;
+            text-align: center;
+            /* رنگ صورتی تیره در هاور */
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #d5006d;
+            /* رنگ صورتی تیره */
+            color: white;
+            position: relative;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>به سایت دانش درباره تمدن و بزرگی ایران خوش آمدید</h1>
+    <h2> جاوید ایران زمین ما </h2>
+    <nav>
+        <ul>
+            <li><a href="#">درباره</a></li>
+            <li><a href="#">فروشگاه</a></li>
+            <li><a href="#">تمام آثار</a></li>
+        </ul>
+    </nav>
+    <h3>مقالات و اموزش ها </h3>
+    <div>
+        {% for Item in data %}
+        <div class="product">
+            <img src="{{ Item.img }}" alt="{{ Item.topic }}">
+            <h4>{{ Item.topic}}</h4>
+            <p> {{Item.come_out}} </p>
+            <button>بیشتر دانستن   </button>
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>حق نشر © وب‌سایت زنده باد فارس 2024</p>
+    </footer>
+</body>
+
+</html>

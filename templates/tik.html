@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیکت بفرستید</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            text-align: right;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .container {
+            margin-top: 50px;
+            text-align: right;
+        }
+        
+        .ticket-form {
+            background: white;
+            text-align: right;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 24px;
+            color: #673ab7;
+        }
+        
+        .btn-submit {
+            background-color: #673ab7;
+            text-align: right;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            background-color: #5e35b1;
+            text-align: right;
+        }
+        
+        .errorlist {
+            color: red;
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="ticket-form">
+            <h2 class="form-title">تیکت بفرستید</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">نام شما:</label>
+                    <input type="text" id="name" name="name" class="form-control" required> {% if form.name.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.name.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">ایمیل شما:</label>
+                    <input type="email" id="email" name="email" class="form-control" required> {% if form.email.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="name">موضوع شما:</label>
+                        <input type="text" id="topic" name="topic" class="form-control" required> {% if form.topic.errors %}"
+                        <ul class="errorlist">
+                            {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="message">پیام شما:</label>
+                        <textarea id="tik" name="tik" class="form-control" required></textarea> {% if form.message.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.message.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-submit">ارسال تیکت</button>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
